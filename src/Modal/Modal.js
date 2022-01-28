@@ -28,7 +28,7 @@ const ModalAdd = ({ data, title, isModalVisible, setIsModalVisible }) => {
   });
 
   const [name, setName] = useState(item.name);
-  const [id, setId] = useState(item.id);
+  const [id, ] = useState(item.id);
   const [price, setPrice] = useState(item.price);
   const [img, setImg] = useState(item.img);
   const [category_id, setCategoryID] = useState(item.category_id);

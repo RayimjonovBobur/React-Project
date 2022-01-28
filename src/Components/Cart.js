@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "antd/dist/antd.css";
 import "../App.css";
-import { Card, Button } from "antd";
+import { Card } from "antd";
 import { useDispatch } from "react-redux";
 import { delet_category } from "../redux/cateory_reducer";
 import { delet_product } from "../redux/product_reducer";

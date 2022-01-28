@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { configureStore } from "@reduxjs/toolkit";
 
 import { store } from "./store";
 import { Provider } from "react-redux";
