@@ -70,4 +70,15 @@
   align-items: center;
   text-align: center;
   margin-left: 1rem;
+  /* border-radius: 15px; */
+}
+
+.hidden {
+  background-color: rgb(116, 134, 233);
+}
+.table-row-light {
+  background-color: #ffffff;
+}
+.table-row-dark {
+  background-color: #fbfbfb;
 }

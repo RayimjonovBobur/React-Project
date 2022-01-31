@@ -6,6 +6,12 @@ import { add_category } from "../redux/cateory_reducer";
 import { add_product } from "../redux/product_reducer";
 
 const ModalAdd = ({ data, title, isModalVisible, setIsModalVisible }) => {
+  const dispatch = useDispatch();
+  const current_url = window.location.href.split("/")[3];
+  const { categoryes } = useSelector((state) => state.categoryes);
+  const [item, setItem] = useState({});
+  const { values } = useSelector((state) => state.values);
+
   const handleOk = () => {
     setIsModalVisible(false);
   };
@@ -14,21 +20,18 @@ const ModalAdd = ({ data, title, isModalVisible, setIsModalVisible }) => {
     setIsModalVisible(false);
   };
 
-  const dispatch = useDispatch();
-
-  const current_url = window.location.href.split("/")[3];
-  const { categoryes } = useSelector((state) => state.categoryes);
-  // const handleSubmit = useSelector((state) => state.data);
-  console.log(data);
-
-  const [item, setItem] = useState({});
-
   useEffect(() => {
     data.forEach((obj) => setItem(obj));
-  });
+    if (values) {
+      setName(values.name);
+      setPrice(values.price);
+      // setImg(values.img);
+      setCategoryID(values.category_id);
+    }
+  }, [values]);
 
   const [name, setName] = useState(item.name);
-  const [id, ] = useState(item.id);
+  const [id] = useState(item.id);
   const [price, setPrice] = useState(item.price);
   const [img, setImg] = useState(item.img);
   const [category_id, setCategoryID] = useState(item.category_id);
@@ -53,6 +56,16 @@ const ModalAdd = ({ data, title, isModalVisible, setIsModalVisible }) => {
     if (current_url === "products") {
       dispatch(add_product(product));
     }
+  };
+
+  const handleChange = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImg(reader.result);
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
   };
 
   return (
@@ -126,9 +139,8 @@ const ModalAdd = ({ data, title, isModalVisible, setIsModalVisible }) => {
                     name="img"
                     id="file-input"
                     className="file-input__input"
-                    value={img}
-                    onChange={(e) => setImg(e.target.value)}
-                    placeholder="img 1"
+                    onChange={handleChange}
+                    placeholder="img"
                     required
                   />
                   <label className="file-input__label" for="file-input">

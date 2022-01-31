@@ -5,9 +5,9 @@ import Cart from "./Cart";
 
 const Category = () => {
   const { categoryes } = useSelector((state) => state.categoryes);
+  // const { values } = useSelector((state) => state.values);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  console.log(categoryes);
   return (
     <div>
       <div className="item1">
@@ -21,6 +21,7 @@ const Category = () => {
           <ModalAdd
             title="Categoryes"
             data={categoryes}
+            // dataIt={values}
             isModalVisible={isModalVisible}
             setIsModalVisible={setIsModalVisible}
           />
