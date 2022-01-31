@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import "antd/dist/antd.css";
 import "../App.css";
 import { Card } from "antd";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { delet_category } from "../redux/cateory_reducer";
 import { delet_product } from "../redux/product_reducer";
 import { editProduct } from "../redux/ItemData";
 
 const Cart = ({ data, title, setIsModalVisible }) => {
-  const { products } = useSelector((state) => state.products);
   const [item, setItems] = useState({});
   const dispatch = useDispatch();
 
