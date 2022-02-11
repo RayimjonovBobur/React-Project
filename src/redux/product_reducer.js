@@ -31,14 +31,18 @@ export const products = createSlice({
   initialState,
   reducers: {
     add_product: (state, action) => {
-      state.products.push(action.payload);
+      state.products = action.payload;
+      return state;
     },
     delet_product: (state, { payload }) => {
       state.products = state.products.filter((el) => el.id !== payload.id);
     },
+    edit_products: (state, { payload }) => {
+      state.products = payload;
+    },
   },
 });
 
-export const { add_product, delet_product } = products.actions;
+export const { add_product, delet_product, edit_products } = products.actions;
 
 export default products.reducer;

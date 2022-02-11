@@ -5,8 +5,10 @@ import Cart from "./Cart";
 
 const Category = () => {
   const { categoryes } = useSelector((state) => state.categoryes);
-  // const { values } = useSelector((state) => state.values);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [edit, setEdit] = useState("");
+  const [editData, setEditData] = useState("");
+  const [istitle, setTitle] = useState(false);
 
   return (
     <div>
@@ -15,13 +17,18 @@ const Category = () => {
           data={categoryes}
           isCategory={true}
           title="Categoryes"
+          setEdit={setEdit}
+          setEditData={setEditData}
           setIsModalVisible={setIsModalVisible}
+          setTitle={setTitle}
         />
         {isModalVisible ? (
           <ModalAdd
+            istitle={istitle}
+            edit={edit}
+            editData={editData}
             title="Categoryes"
             data={categoryes}
-            // dataIt={values}
             isModalVisible={isModalVisible}
             setIsModalVisible={setIsModalVisible}
           />

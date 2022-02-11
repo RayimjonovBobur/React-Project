@@ -4,23 +4,27 @@ import ModalAdd from "../Modal/Modal";
 import Cart from "./Cart";
 
 const Products = () => {
-  // const { values } = useSelector((state) => state.values);
   const { products } = useSelector((state) => state.products);
+  const [edit, setEdit] = useState("");
+  const [istitle, setTitle] = useState(false);
+  const [editData, setEditData] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <div>
       <div className="item1">
-        <button className="btn btn-danger">Add</button>
-        <button className="btn btn-primary">Edit</button>
-        <button className="btn btn-success">Delete</button>
         <Cart
           data={products}
+          setEdit={setEdit}
           title="Products"
+          setEditData={setEditData}
           setIsModalVisible={setIsModalVisible}
+          setTitle={setTitle}
         />
         {isModalVisible ? (
           <ModalAdd
-            // dataIt={values}
+            istitle={istitle}
+            edit={edit}
+            editData={editData}
             data={products}
             isModalVisible={isModalVisible}
             setIsModalVisible={setIsModalVisible}
